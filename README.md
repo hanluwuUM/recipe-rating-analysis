@@ -116,6 +116,60 @@ merged_data_head = merged_data.head().to_markdown(index=False)
 
 Below is the head of the cleaned relevant data:
 
+# Relevant Data Sample
+
+Below is a sample of the merged dataset:
+
+<div style="max-width: 800px; overflow-x: auto;">
+  <table>
+    <thead>
+      <tr>
+        <th>recipe_id</th>
+        <th>tags</th>
+        <th>rating_average</th>
+        <th>review</th>
+        <th>minutes</th>
+        <th>n_steps</th>
+        <th>calories</th>
+        <th>total_fat_pdv</th>
+        <th>sugar_pdv</th>
+        <th>protein_pdv</th>
+        <th>num_tags</th>
+        <th>review_length</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>333281</td>
+        <td>['60-minutes-or-less', 'time-to...']</td>
+        <td>4</td>
+        <td>These were pretty good, but took...</td>
+        <td>40</td>
+        <td>10</td>
+        <td>138.4</td>
+        <td>10</td>
+        <td>50</td>
+        <td>3</td>
+        <td>14</td>
+        <td>50</td>
+      </tr>
+      <tr>
+        <td>453467</td>
+        <td>['60-minutes-or-less', 'cuisine...']</td>
+        <td>5</td>
+        <td>Originally I was gonna cut the rec...</td>
+        <td>45</td>
+        <td>12</td>
+        <td>595.1</td>
+        <td>46</td>
+        <td>211</td>
+        <td>13</td>
+        <td>9</td>
+        <td>65</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 # Relevant Data Sample
 
