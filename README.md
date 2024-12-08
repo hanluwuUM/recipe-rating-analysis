@@ -117,7 +117,6 @@ merged_data_head = merged_data.head().to_markdown(index=False)
 Below is the head of the cleaned relevant data:
 
 
-
 # Relevant Data Sample
 
 Below is a sample of the merged dataset:
@@ -130,7 +129,6 @@ Below is a sample of the merged dataset:
 |      453467 | ['60-minutes-or-less', 'cuisine...'] |                5 | Originally I was gonna cut the rec...    |        45 |        12 |      595.1 |              46 |         211 |            13 |          9 |              65 |
 
 </div>
-
 
 
 
