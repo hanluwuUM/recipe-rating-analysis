@@ -171,19 +171,6 @@ Below is a sample of the merged dataset:
   </table>
 </div>
 
-# Relevant Data Sample
-
-Below is a sample of the merged dataset:
-
-<div style="max-width: 800px; overflow-x: auto;">
-
-|   recipe_id | tags                                  |   rating_average | review                                    |   minutes |   n_steps |   calories |   total_fat_pdv |   sugar_pdv |   protein_pdv |   num_tags |   review_length |
-|------------:|:-------------------------------------|-----------------:|:-----------------------------------------|----------:|----------:|-----------:|----------------:|------------:|--------------:|-----------:|----------------:|
-|      333281 | ['60-minutes-or-less', 'time-to...'] |                4 | These were pretty good, but took...      |        40 |        10 |      138.4 |              10 |          50 |             3 |         14 |              50 |
-|      453467 | ['60-minutes-or-less', 'cuisine...'] |                5 | Originally I was gonna cut the rec...    |        45 |        12 |      595.1 |              46 |         211 |            13 |          9 |              65 |
-
-</div>
-
 
 
 # Merged Data Sample
