@@ -55,7 +55,7 @@ To prepare the dataset for analysis, we applied the following data cleaning step
 
 Univariate Analysis
 <iframe 
-    src="image1.html" 
+    src="/Users/WuHanLu/image1.html" 
     width="1000" 
     height="600" 
     style="border: none;">
@@ -68,14 +68,14 @@ The tags "easy" and "occasion" highlight that simplicity and context (e.g., fest
 Bivariate Analysis
 
 <iframe 
-    src="image2.html" 
+    src="/Users/WuHanLu/image2.html" 
     width="1000" 
     height="600" 
     style="border: none;">
 </iframe>
 
 <iframe 
-    src="img3.html" 
+    src="/Users/WuHanLu/img3.html" 
     width="1000" 
     height="600" 
     style="border: none;">
