@@ -66,7 +66,7 @@ Univariate Analysis
 <iframe 
     src="image1.html" 
     width="700" 
-    height="300" 
+    height="500" 
     style="border: none;">
 </iframe>
 
@@ -79,7 +79,7 @@ Bivariate Analysis
 <iframe 
     src="image2.html" 
     width="700" 
-    height="300" 
+    height="500" 
     style="border: none;">
 </iframe>
 
@@ -89,9 +89,9 @@ The distribution is positively skewed, with a strong bias toward higher ratings.
 Variability is observed in the mid-range (3-4 ratings), indicating mixed feedback for average recipes.
 
 <iframe 
-    src="img3.html" 
+    src="image3.html" 
     width="700" 
-    height="300" 
+    height="500" 
     style="border: none;">
 </iframe>
 
