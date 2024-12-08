@@ -1,120 +1,53 @@
-#-------------------------------
+# -------------------------------
 # General Site Settings
-baseurl: "/recipe-rating-analysis" # the subpath of your site on GitHub Pages
-url: "https://hanluwuum.github.io" # the base hostname & protocol for your site
-
-#-------------------------------
-# Build Settings
 title: Recipe Rating Analysis
 author: Hanlu Wu, Xiulin Chen
-description: A data analysis project on recipe ratings.
+description: A data analysis project exploring recipe rating prediction.
+
+# -------------------------------
+# Build Settings
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://hanluwuum.github.io/recipe-rating-analysis/" # the base hostname & protocol for your site
 
 markdown: kramdown
 permalink: /:title/
+paginate: 5
+paginate_path: "/blog/page/:num"
+
+# -------------------------------
+# Plugins
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
-  - jekyll-seo-tag
-  - jekyll-feed
 
-paginate: 7
-paginate_path: "/blog/page/:num"
-
-#-------------------------------
-# Collections
-collections:
-  pages:
-    output: true
-    permalink: /:name/
-  posts:
-    output: true
-    permalink: /blog/:slug/
-  projects:
-    output: true
-    permalink: /project/:slug/
-
-# Pages Path
-defaults:
-  - scope:
-      path: ""
-    values:
-      layout: "default"
-  - scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: "page"
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-  - scope:
-      path: ""
-      type: "projects"
-    values:
-      layout: "project"
-
-#-------------------------------
-# SASS Settings
-sass:
-  sass_dir: _sass
-  style: compressed
-
-#-------------------------------
-# Sections (5 sections)
+# -------------------------------
+# Sections
 sections:
-  - name: hero
-    title: "Welcome to Recipe Rating Analysis"
-    description: "Discover insights into recipe ratings with our data analysis project."
-    background_image: "images/hero-bg.jpg"
-    cta_text: "Explore More"
-    cta_link: "/blog/"
-  - name: about
-    title: "About the Project"
-    description: "Learn more about how we analyze recipe ratings using advanced techniques."
-    icon: "fa-info-circle"
-  - name: features
-    title: "Project Features"
-    description: "Explore our data visualizations, predictive models, and insights."
-    features:
-      - title: "Tags Analysis"
-        description: "Understand recipe popularity based on descriptive tags."
-        icon: "fa-tags"
-      - title: "Contributor Reputation"
-        description: "Examine how contributors influence recipe ratings."
-        icon: "fa-user"
-      - title: "Review Sentiment"
-        description: "Leverage natural language processing to extract insights."
-        icon: "fa-comments"
-  - name: projects
-    title: "Projects"
-    description: "Explore related projects and datasets."
-    cta_text: "View Projects"
-    cta_link: "/projects/"
-  - name: contact
-    title: "Get in Touch"
-    description: "Have questions or feedback? We'd love to hear from you."
-    contact_form: true
-    cta_text: "Contact Us"
-    cta_link: "/contact/"
+  - name: Introduction
+    content: >
+      Welcome to our Recipe Rating Analysis project! This project explores how recipe features such as tags, preparation time, and reviews contribute to predicting recipe ratings. 
+      Through machine learning techniques and careful analysis, we aim to uncover key insights that can help better understand user preferences.
 
-#-------------------------------
-# Social Links
-social:
-  twitter: https://twitter.com/yourprofile
-  github: https://github.com/hanluwuUM/recipe-rating-analysis
-  linkedin: https://linkedin.com/in/yourprofile
+  - name: Data Cleaning and Exploratory Data Analysis
+    content: >
+      The raw dataset contained missing values, duplicate entries, and inconsistent formatting. We cleaned the data by removing duplicates, handling missing values, and standardizing column formats.
+      Exploratory analysis revealed interesting patterns, such as the correlation between preparation time and recipe ratings, as well as contributor trends and review sentiments.
 
-#-------------------------------
-# Exclusions
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - README.md
-  - node_modules/
-  - vendor/
+  - name: Framing a Prediction Problem
+    content: >
+      The main goal of this analysis was to predict the rating of a recipe based on its features. Key predictors include tags, preparation time, number of steps, contributor reputation, and review sentiment.
+      By defining this problem, we could focus on building models that leverage these predictors to make accurate and meaningful predictions.
 
-#-------------------------------
-# Additional Settings
-timezone: America/Detroit # Set your timezone
+  - name: Baseline Model
+    content: >
+      Our baseline model used a simple machine learning algorithm with two features: preparation time and number of steps. 
+      While the performance was moderate, it provided a reference point to evaluate improvements from our final model.
+
+  - name: Final Model
+    content: >
+      The final model incorporated engineered features such as review sentiment scores and contributor reputation. 
+      After tuning hyperparameters and testing various algorithms, our final model achieved better performance and provided deeper insights into recipe rating patterns.
+
+# -------------------------------
+# Theme
+theme: "minimal"
