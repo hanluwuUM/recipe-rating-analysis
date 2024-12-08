@@ -1,8 +1,7 @@
 #-------------------------------
 # General Site Settings
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-
+baseurl: "/recipe-rating-analysis" # the subpath of your site on GitHub Pages
+url: "https://hanluwuum.github.io" # the base hostname & protocol for your site
 
 #-------------------------------
 # Build Settings
@@ -10,16 +9,16 @@ title: Recipe Rating Analysis
 author: Hanlu Wu, Xiulin Chen
 description: A data analysis project on recipe ratings.
 
-
 markdown: kramdown
 permalink: /:title/
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
 
 paginate: 7
 paginate_path: "/blog/page/:num"
-
 
 #-------------------------------
 # Collections
@@ -56,6 +55,66 @@ defaults:
     values:
       layout: "project"
 
+#-------------------------------
+# SASS Settings
 sass:
   sass_dir: _sass
   style: compressed
+
+#-------------------------------
+# Sections (5 sections)
+sections:
+  - name: hero
+    title: "Welcome to Recipe Rating Analysis"
+    description: "Discover insights into recipe ratings with our data analysis project."
+    background_image: "images/hero-bg.jpg"
+    cta_text: "Explore More"
+    cta_link: "/blog/"
+  - name: about
+    title: "About the Project"
+    description: "Learn more about how we analyze recipe ratings using advanced techniques."
+    icon: "fa-info-circle"
+  - name: features
+    title: "Project Features"
+    description: "Explore our data visualizations, predictive models, and insights."
+    features:
+      - title: "Tags Analysis"
+        description: "Understand recipe popularity based on descriptive tags."
+        icon: "fa-tags"
+      - title: "Contributor Reputation"
+        description: "Examine how contributors influence recipe ratings."
+        icon: "fa-user"
+      - title: "Review Sentiment"
+        description: "Leverage natural language processing to extract insights."
+        icon: "fa-comments"
+  - name: projects
+    title: "Projects"
+    description: "Explore related projects and datasets."
+    cta_text: "View Projects"
+    cta_link: "/projects/"
+  - name: contact
+    title: "Get in Touch"
+    description: "Have questions or feedback? We'd love to hear from you."
+    contact_form: true
+    cta_text: "Contact Us"
+    cta_link: "/contact/"
+
+#-------------------------------
+# Social Links
+social:
+  twitter: https://twitter.com/yourprofile
+  github: https://github.com/hanluwuUM/recipe-rating-analysis
+  linkedin: https://linkedin.com/in/yourprofile
+
+#-------------------------------
+# Exclusions
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules/
+  - vendor/
+
+#-------------------------------
+# Additional Settings
+timezone: America/Detroit # Set your timezone
