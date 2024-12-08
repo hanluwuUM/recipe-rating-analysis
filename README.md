@@ -245,7 +245,7 @@ Focusing on optimizing preparation time for low-rated recipes could improve thei
 
 
 Specifically , here are what our cleaned data look like
-among those, relevant data only select the relevant cols in this analysis, and merged_data include all cols we have cleaned up.v
+among those, relevant data only select the relevant cols in this analysis, and merged_data include all cols we have cleaned up.
 ```py
 relevant_data_head = relevant_data.head().to_markdown(index=False)
 merged_data_head = merged_data.head().to_markdown(index=False)
