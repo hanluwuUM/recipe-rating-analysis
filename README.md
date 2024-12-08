@@ -109,6 +109,11 @@ relevant_data_head = relevant_data.head().to_markdown(index=False)
 merged_data_head = merged_data.head().to_markdown(index=False)
 ```
 
+
+### Cleaned Data display
+
+## Relevant Data Head
+
 Below is the head of the cleaned relevant data:
 
 
@@ -117,10 +122,15 @@ Below is the head of the cleaned relevant data:
 
 Below is a sample of the merged dataset:
 
-|   recipe_id | tags                                                                                                                                                                                                                        |   rating_average | review                                                                                                                                                                                                                                                                                                                                           |   minutes |   n_steps |   calories |   total_fat_pdv |   sugar_pdv |   protein_pdv |   num_tags |   review_length |
-|------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------:|----------:|-----------:|----------------:|------------:|--------------:|-----------:|----------------:|
-|      333281 | ['60-minutes-or-less', 'time-to-make', 'course', 'main-ingredient', 'preparation', 'for-large-groups', 'desserts', 'lunch', 'snacks', 'cookies-and-brownies', 'chocolate', 'bar-cookies', 'brownies', 'number-of-servings'] |                4 | These were pretty good, but took forever to bake.  I would send it ended up being almost an hour!  Even then, the brownies stuck to the foil, and were on the overly moist side and not easy to cut.  They did taste quite rich, though!  Made for My 3 Chefs.                                                                                   |        40 |        10 |      138.4 |              10 |          50 |             3 |         14 |              50 |
-|      453467 | ['60-minutes-or-less', 'time-to-make', 'cuisine', 'preparation', 'north-american', 'for-large-groups', 'canadian', 'british-columbian', 'number-of-servings']                                                               |                5 | Originally I was gonna cut the recipe in half (just the 2 of us here), but then we had a park-wide yard sale, & I made the whole batch & used them as enticements for potential buyers ~ what the hey, a free cookie as delicious as these are, definitely works its magic! Will be making these again, for sure! Thanks for posting the recipe! |        45 |        12 |      595.1 |              46 |         211 |            13 |          9 |              65 |
+<div style="max-width: 800px; overflow-x: auto;">
+
+|   recipe_id | tags                                  |   rating_average | review                                    |   minutes |   n_steps |   calories |   total_fat_pdv |   sugar_pdv |   protein_pdv |   num_tags |   review_length |
+|------------:|:-------------------------------------|-----------------:|:-----------------------------------------|----------:|----------:|-----------:|----------------:|------------:|--------------:|-----------:|----------------:|
+|      333281 | ['60-minutes-or-less', 'time-to...'] |                4 | These were pretty good, but took...      |        40 |        10 |      138.4 |              10 |          50 |             3 |         14 |              50 |
+|      453467 | ['60-minutes-or-less', 'cuisine...'] |                5 | Originally I was gonna cut the rec...    |        45 |        12 |      595.1 |              46 |         211 |            13 |          9 |              65 |
+
+</div>
+
 
 
 
@@ -128,10 +138,84 @@ Below is a sample of the merged dataset:
 
 Below is a sample of the merged dataset:
 
-| name                                 |   recipe_id |   minutes |   contributor_id | submitted   | tags                                                                                                                                                                                                                        | nutrition                                    |   n_steps | steps                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | description                                                                                                                                                                                                                                                          | ingredients                                                                                                                                                                    |   n_ingredients |   user_id | date       |   rating | review                                                                                                                                                                                                                                                                                                                                           |   rating_average |   calories |   total_fat_pdv |   sugar_pdv |   protein_pdv |
-|:-------------------------------------|------------:|----------:|-----------------:|:------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------|----------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------:|----------:|:-----------|---------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------:|-----------:|----------------:|------------:|--------------:|
-| 1 brownies in the world    best ever |      333281 |        40 |           985201 | 2008-10-27  | ['60-minutes-or-less', 'time-to-make', 'course', 'main-ingredient', 'preparation', 'for-large-groups', 'desserts', 'lunch', 'snacks', 'cookies-and-brownies', 'chocolate', 'bar-cookies', 'brownies', 'number-of-servings'] | [138.4, 10.0, 50.0, 3.0, 3.0, 19.0, 6.0]     |        10 | ['heat the oven to 350f and arrange the rack in the middle', 'line an 8-by-8-inch glass baking dish with aluminum foil', 'combine chocolate and butter in a medium saucepan and cook over medium-low heat , stirring frequently , until evenly melted', 'remove from heat and let cool to room temperature', 'combine eggs , sugar , cocoa powder , vanilla extract , espresso , and salt in a large bowl and briefly stir until just evenly incorporated', 'add cooled chocolate and mix until uniform in color', 'add flour and stir until just incorporated', 'transfer batter to the prepared baking dish', 'bake until a tester inserted in the center of the brownies comes out clean , about 25 to 30 minutes', 'remove from the oven and cool completely before cutting']                                                  | these are the most; chocolatey, moist, rich, dense, fudgy, delicious brownies that you'll ever make.....sereiously! there's no doubt that these will be your fav brownies ever for you can add things to them or make them plain.....either way they're pure heaven! | ['bittersweet chocolate', 'unsalted butter', 'eggs', 'granulated sugar', 'unsweetened cocoa powder', 'vanilla extract', 'brewed espresso', 'kosher salt', 'all-purpose flour'] |               9 |    386585 | 2008-11-19 |        4 | These were pretty good, but took forever to bake.  I would send it ended up being almost an hour!  Even then, the brownies stuck to the foil, and were on the overly moist side and not easy to cut.  They did taste quite rich, though!  Made for My 3 Chefs.                                                                                   |                4 |      138.4 |              10 |          50 |             3 |
-| 1 in canada chocolate chip cookies   |      453467 |        45 |          1848091 | 2011-04-11  | ['60-minutes-or-less', 'time-to-make', 'cuisine', 'preparation', 'north-american', 'for-large-groups', 'canadian', 'british-columbian', 'number-of-servings']                                                               | [595.1, 46.0, 211.0, 22.0, 13.0, 51.0, 26.0] |        12 | ['pre-heat oven the 350 degrees f', 'in a mixing bowl , sift together the flours and baking powder', 'set aside', 'in another mixing bowl , blend together the sugars , margarine , and salt until light and fluffy', 'add the eggs , water , and vanilla to the margarine / sugar mixture and mix together until well combined', 'add in the flour mixture to the wet ingredients and blend until combined', 'scrape down the sides of the bowl and add the chocolate chips', 'mix until combined', 'scrape down the sides to the bowl again', 'using an ice cream scoop , scoop evenly rounded balls of dough and place of cookie sheet about 1 - 2 inches apart to allow for spreading during baking', 'bake for 10 - 15 minutes or until golden brown on the outside and soft & chewy in the center', 'serve hot and enjoy !'] | this is the recipe that we use at my school cafeteria for chocolate chip cookies. they must be the best chocolate chip cookies i have ever had! if you don't have margarine or don't like it, then just use butter (softened) instead.                               | ['white sugar', 'brown sugar', 'salt', 'margarine', 'eggs', 'vanilla', 'water', 'all-purpose flour', 'whole wheat flour', 'baking soda', 'chocolate chips']                    |              11 |    424680 | 2012-01-26 |        5 | Originally I was gonna cut the recipe in half (just the 2 of us here), but then we had a park-wide yard sale, & I made the whole batch & used them as enticements for potential buyers ~ what the hey, a free cookie as delicious as these are, definitely works its magic! Will be making these again, for sure! Thanks for posting the recipe! |                5 |      595.1 |              46 |         211 |            13 |
+
+<div style="max-width: 800px; overflow-x: auto;">
+  <table>
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>recipe_id</th>
+        <th>minutes</th>
+        <th>contributor_id</th>
+        <th>submitted</th>
+        <th>tags</th>
+        <th>nutrition</th>
+        <th>n_steps</th>
+        <th>steps</th>
+        <th>description</th>
+        <th>ingredients</th>
+        <th>n_ingredients</th>
+        <th>user_id</th>
+        <th>date</th>
+        <th>rating</th>
+        <th>review</th>
+        <th>rating_average</th>
+        <th>calories</th>
+        <th>total_fat_pdv</th>
+        <th>sugar_pdv</th>
+        <th>protein_pdv</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1 brownies in the world best ever</td>
+        <td>333281</td>
+        <td>40</td>
+        <td>985201</td>
+        <td>2008-10-27</td>
+        <td>['60-minutes-or-less', 'time-to-make', ...]</td>
+        <td>[138.4, 10.0, 50.0, ...]</td>
+        <td>10</td>
+        <td>['heat the oven...', 'line...', ...]</td>
+        <td>These are the most chocolatey...</td>
+        <td>['bittersweet chocolate', 'unsalted ...]</td>
+        <td>9</td>
+        <td>386585</td>
+        <td>2008-11-19</td>
+        <td>4</td>
+        <td>These were pretty good, but...</td>
+        <td>4</td>
+        <td>138.4</td>
+        <td>10</td>
+        <td>50</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>1 in canada chocolate chip cookies</td>
+        <td>453467</td>
+        <td>45</td>
+        <td>1848091</td>
+        <td>2011-04-11</td>
+        <td>['60-minutes-or-less', 'time-to-make', ...]</td>
+        <td>[595.1, 46.0, 211.0, ...]</td>
+        <td>12</td>
+        <td>['pre-heat oven...', 'in a mixing...', ...]</td>
+        <td>This is the recipe we use...</td>
+        <td>['white sugar', 'brown sugar', ...]</td>
+        <td>11</td>
+        <td>424680</td>
+        <td>2012-01-26</td>
+        <td>5</td>
+        <td>Originally I was gonna...</td>
+        <td>5</td>
+        <td>595.1</td>
+        <td>46</td>
+        <td>211</td>
+        <td>13</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 
 
