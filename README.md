@@ -460,10 +460,10 @@ To enhance the predictive power of the model, the following features were includ
 | **RMSE**            | 0.74          | 0.70        |
 
 - **Best Hyperparameters**:
-  - `n_estimators`: 200
-  - `max_depth`: 20
+  - `n_estimators`: 100
+  - `max_depth`: 10
   - `min_samples_split`: 5
-  - `min_samples_leaf`: 2
+  - `min_samples_leaf`: 4
 
 ---
 
