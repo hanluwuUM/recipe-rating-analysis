@@ -34,30 +34,39 @@ Understanding the factors that drive user satisfaction with recipes can help che
 
 ## Data Cleaning
 
+
 ### Overview of Cleaning Steps
 
-To prepare the dataset for analysis, we applied the following data cleaning steps:
+To prepare the dataset for analysis, the following data cleaning steps were performed:
 
-1. **Handling Missing Values**:
-   - Replaced zero ratings in the `rating` column with `NaN` to reflect their missing nature.
-   - Removed rows with missing `review`, `tags`, or `calories` to ensure the analysis uses complete data.
+1. **Merging Datasets**:
+   - Combined two datasets using "recipe ID" as the key.
+   - Calculated the average rating for each recipe to create a new `rating_average` feature.
 
-2. **Converting Data Types**:
-   - Transformed the `nutrition` column (stored as strings) into Python lists for easy extraction of individual components (e.g., calories, fat).
-   - Converted `tags` from a string representation to a list of tags.
+2. **Handling Missing Values**:
+   - Replaced zero values in the `rating` column with `NaN` to indicate missing ratings.
+   - Removed rows with missing values in critical columns, such as `review`, `tags`, and `calories`, to ensure data completeness for analysis.
 
-3. **Feature Engineering**:
-   - Added new columns, such as:
-     - `review_length`: The number of words in each review.
-     - `num_tags`: The number of tags associated with each recipe.
+3. **Data Type Transformation**:
+   - Converted the `nutrition` column (originally a string) into a Python list to allow easy access to individual nutritional components (e.g., calories, fat).
+   - Transformed the `tags` column from a string format into a list of tags for better usability.
+
+4. **Feature Engineering**:
+   - Created additional features to enhance the dataset:
+     - `review_length`: Measured the word count of each review.
+     - `num_tags`: Counted the number of tags associated with each recipe.
+
+5. **Splitting Nutritional Data**:
+   - Extracted specific nutrients (e.g., calories, protein, fat, sugar) into separate columns to analyze their influence on recipe ratings.
+
 
 ## Visualization
 
-**Univariate Analysis**
+Univariate Analysis
 <iframe 
     src="image1.html" 
-    width="800" 
-    height="600" 
+    width="700" 
+    height="300" 
     style="border: none;">
 </iframe>
 
@@ -65,25 +74,65 @@ The most common tags, such as "preparation," "time-to-make," and "course," are g
 Tags like "main-ingredient" and "dietary" are prominent, indicating that recipes are often classified based on their primary components or dietary considerations. This aligns with the importance of catering to specific dietary needs (e.g., vegetarian, gluten-free) in recipe datasets.
 The tags "easy" and "occasion" highlight that simplicity and context (e.g., festive or special events) are important aspects of recipe selection. These attributes may reflect users' preferences for quick and contextually appropriate dishes.
 
-**Bivariate Analysis**
+Bivariate Analysis
 
 <iframe 
     src="image2.html" 
-    width="800" 
-    height="600" 
+    width="700" 
+    height="300" 
     style="border: none;">
 </iframe>
 
-This graph represents the distribution of recipe ratings on a logarithmic scale. The x-axis shows the rating values, which range from 1 to 5, while the y-axis represents the frequency of ratings in a logarithmic scale. The distribution indicates a significantly higher concentration of ratings around 4 and 5, suggesting that most recipes tend to receive high ratings. Ratings below 3 are much less frequent, as evidenced by the sparse data points and lower frequencies in those ranges. The use of a log scale emphasizes the variability in the frequency of less common ratings, making it easier to discern trends among rarer values. Overall, the graph suggests a positive bias in recipe ratings, with most users rating recipes favorably.
+The majority of recipes have high ratings (4-5), indicating they are generally well-received.
+Low ratings (1-2) are rare, suggesting either fewer poor-quality recipes or under-reporting of negative experiences.
+The distribution is positively skewed, with a strong bias toward higher ratings.
+Variability is observed in the mid-range (3-4 ratings), indicating mixed feedback for average recipes.
 
 <iframe 
-    src="image3.html" 
-    width="800" 
-    height="600" 
+    src="img3.html" 
+    width="700" 
+    height="300" 
     style="border: none;">
 </iframe>
 
-This graph illustrates the distribution of log-transformed preparation times across recipe rating categories. Higher-rated recipes (4-5) show a wider range of preparation times but are mostly concentrated within moderate ranges, suggesting variability in time investment for popular recipes. Lower-rated recipes (0-1 and 1-2) have narrower distributions, indicating more consistent preparation times. Mid-range ratings (3-4 and 2-3) display intermediate variability. Overall, the graph suggests that preparation time differences may influence user satisfaction and recipe ratings.
+Across all rating categories, the median preparation time (log-transformed) is relatively consistent, suggesting that preparation time might not strongly influence a recipe's rating.
+Lower-rated recipes (categories 0-1 and 1-2) exhibit slightly more variability in preparation time, with some recipes requiring notably longer times.
+Higher-rated recipes (categories 4-5) show a tighter distribution, implying that recipes with more predictable preparation times tend to receive better ratings.
+Recipes that are too time-consuming may deter users, especially for lower-rated recipes.
+Focusing on optimizing preparation time for low-rated recipes could improve their reception.
+
+
+Specifically , here are what our cleaned data look like
+among those, relevant data only select the relevant cols in this analysis, and merged_data include all cols we have cleaned up.v
+```py
+relevant_data_head = relevant_data.head().to_markdown(index=False)
+merged_data_head = merged_data.head().to_markdown(index=False)
+```
+
+Below is the head of the cleaned relevant data:
+
+
+
+# Relevant Data Sample
+
+Below is a sample of the merged dataset:
+
+|   recipe_id | tags                                                                                                                                                                                                                        |   rating_average | review                                                                                                                                                                                                                                                                                                                                           |   minutes |   n_steps |   calories |   total_fat_pdv |   sugar_pdv |   protein_pdv |   num_tags |   review_length |
+|------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------:|----------:|-----------:|----------------:|------------:|--------------:|-----------:|----------------:|
+|      333281 | ['60-minutes-or-less', 'time-to-make', 'course', 'main-ingredient', 'preparation', 'for-large-groups', 'desserts', 'lunch', 'snacks', 'cookies-and-brownies', 'chocolate', 'bar-cookies', 'brownies', 'number-of-servings'] |                4 | These were pretty good, but took forever to bake.  I would send it ended up being almost an hour!  Even then, the brownies stuck to the foil, and were on the overly moist side and not easy to cut.  They did taste quite rich, though!  Made for My 3 Chefs.                                                                                   |        40 |        10 |      138.4 |              10 |          50 |             3 |         14 |              50 |
+|      453467 | ['60-minutes-or-less', 'time-to-make', 'cuisine', 'preparation', 'north-american', 'for-large-groups', 'canadian', 'british-columbian', 'number-of-servings']                                                               |                5 | Originally I was gonna cut the recipe in half (just the 2 of us here), but then we had a park-wide yard sale, & I made the whole batch & used them as enticements for potential buyers ~ what the hey, a free cookie as delicious as these are, definitely works its magic! Will be making these again, for sure! Thanks for posting the recipe! |        45 |        12 |      595.1 |              46 |         211 |            13 |          9 |              65 |
+
+
+
+# Merged Data Sample
+
+Below is a sample of the merged dataset:
+
+| name                                 |   recipe_id |   minutes |   contributor_id | submitted   | tags                                                                                                                                                                                                                        | nutrition                                    |   n_steps | steps                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | description                                                                                                                                                                                                                                                          | ingredients                                                                                                                                                                    |   n_ingredients |   user_id | date       |   rating | review                                                                                                                                                                                                                                                                                                                                           |   rating_average |   calories |   total_fat_pdv |   sugar_pdv |   protein_pdv |
+|:-------------------------------------|------------:|----------:|-----------------:|:------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------|----------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------:|----------:|:-----------|---------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------:|-----------:|----------------:|------------:|--------------:|
+| 1 brownies in the world    best ever |      333281 |        40 |           985201 | 2008-10-27  | ['60-minutes-or-less', 'time-to-make', 'course', 'main-ingredient', 'preparation', 'for-large-groups', 'desserts', 'lunch', 'snacks', 'cookies-and-brownies', 'chocolate', 'bar-cookies', 'brownies', 'number-of-servings'] | [138.4, 10.0, 50.0, 3.0, 3.0, 19.0, 6.0]     |        10 | ['heat the oven to 350f and arrange the rack in the middle', 'line an 8-by-8-inch glass baking dish with aluminum foil', 'combine chocolate and butter in a medium saucepan and cook over medium-low heat , stirring frequently , until evenly melted', 'remove from heat and let cool to room temperature', 'combine eggs , sugar , cocoa powder , vanilla extract , espresso , and salt in a large bowl and briefly stir until just evenly incorporated', 'add cooled chocolate and mix until uniform in color', 'add flour and stir until just incorporated', 'transfer batter to the prepared baking dish', 'bake until a tester inserted in the center of the brownies comes out clean , about 25 to 30 minutes', 'remove from the oven and cool completely before cutting']                                                  | these are the most; chocolatey, moist, rich, dense, fudgy, delicious brownies that you'll ever make.....sereiously! there's no doubt that these will be your fav brownies ever for you can add things to them or make them plain.....either way they're pure heaven! | ['bittersweet chocolate', 'unsalted butter', 'eggs', 'granulated sugar', 'unsweetened cocoa powder', 'vanilla extract', 'brewed espresso', 'kosher salt', 'all-purpose flour'] |               9 |    386585 | 2008-11-19 |        4 | These were pretty good, but took forever to bake.  I would send it ended up being almost an hour!  Even then, the brownies stuck to the foil, and were on the overly moist side and not easy to cut.  They did taste quite rich, though!  Made for My 3 Chefs.                                                                                   |                4 |      138.4 |              10 |          50 |             3 |
+| 1 in canada chocolate chip cookies   |      453467 |        45 |          1848091 | 2011-04-11  | ['60-minutes-or-less', 'time-to-make', 'cuisine', 'preparation', 'north-american', 'for-large-groups', 'canadian', 'british-columbian', 'number-of-servings']                                                               | [595.1, 46.0, 211.0, 22.0, 13.0, 51.0, 26.0] |        12 | ['pre-heat oven the 350 degrees f', 'in a mixing bowl , sift together the flours and baking powder', 'set aside', 'in another mixing bowl , blend together the sugars , margarine , and salt until light and fluffy', 'add the eggs , water , and vanilla to the margarine / sugar mixture and mix together until well combined', 'add in the flour mixture to the wet ingredients and blend until combined', 'scrape down the sides of the bowl and add the chocolate chips', 'mix until combined', 'scrape down the sides to the bowl again', 'using an ice cream scoop , scoop evenly rounded balls of dough and place of cookie sheet about 1 - 2 inches apart to allow for spreading during baking', 'bake for 10 - 15 minutes or until golden brown on the outside and soft & chewy in the center', 'serve hot and enjoy !'] | this is the recipe that we use at my school cafeteria for chocolate chip cookies. they must be the best chocolate chip cookies i have ever had! if you don't have margarine or don't like it, then just use butter (softened) instead.                               | ['white sugar', 'brown sugar', 'salt', 'margarine', 'eggs', 'vanilla', 'water', 'all-purpose flour', 'whole wheat flour', 'baking soda', 'chocolate chips']                    |              11 |    424680 | 2012-01-26 |        5 | Originally I was gonna cut the recipe in half (just the 2 of us here), but then we had a park-wide yard sale, & I made the whole batch & used them as enticements for potential buyers ~ what the hey, a free cookie as delicious as these are, definitely works its magic! Will be making these again, for sure! Thanks for posting the recipe! |                5 |      595.1 |              46 |         211 |            13 |
+
 
 
 ---
