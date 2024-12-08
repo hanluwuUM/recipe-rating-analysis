@@ -53,11 +53,11 @@ To prepare the dataset for analysis, we applied the following data cleaning step
 
 ## Visualization
 
-Univariate Analysis
+**Univariate Analysis**
 <iframe 
     src="image1.html" 
-    width="400" 
-    height="300" 
+    width="800" 
+    height="600" 
     style="border: none;">
 </iframe>
 
@@ -69,19 +69,21 @@ Bivariate Analysis
 
 <iframe 
     src="image2.html" 
-    width="400" 
-    height="300" 
+    width="800" 
+    height="600" 
     style="border: none;">
 </iframe>
+
+This graph represents the distribution of recipe ratings on a logarithmic scale. The x-axis shows the rating values, which range from 1 to 5, while the y-axis represents the frequency of ratings in a logarithmic scale. The distribution indicates a significantly higher concentration of ratings around 4 and 5, suggesting that most recipes tend to receive high ratings. Ratings below 3 are much less frequent, as evidenced by the sparse data points and lower frequencies in those ranges. The use of a log scale emphasizes the variability in the frequency of less common ratings, making it easier to discern trends among rarer values. Overall, the graph suggests a positive bias in recipe ratings, with most users rating recipes favorably.
 
 <iframe 
     src="image3.html" 
-    width="400" 
-    height="300" 
+    width="800" 
+    height="600" 
     style="border: none;">
 </iframe>
 
-
+This graph illustrates the distribution of log-transformed preparation times across recipe rating categories. Higher-rated recipes (4-5) show a wider range of preparation times but are mostly concentrated within moderate ranges, suggesting variability in time investment for popular recipes. Lower-rated recipes (0-1 and 1-2) have narrower distributions, indicating more consistent preparation times. Mid-range ratings (3-4 and 2-3) display intermediate variability. Overall, the graph suggests that preparation time differences may influence user satisfaction and recipe ratings.
 
 
 ---
