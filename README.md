@@ -65,7 +65,7 @@ The most common tags, such as "preparation," "time-to-make," and "course," are g
 Tags like "main-ingredient" and "dietary" are prominent, indicating that recipes are often classified based on their primary components or dietary considerations. This aligns with the importance of catering to specific dietary needs (e.g., vegetarian, gluten-free) in recipe datasets.
 The tags "easy" and "occasion" highlight that simplicity and context (e.g., festive or special events) are important aspects of recipe selection. These attributes may reflect users' preferences for quick and contextually appropriate dishes.
 
-Bivariate Analysis
+**Bivariate Analysis**
 
 <iframe 
     src="image2.html" 
