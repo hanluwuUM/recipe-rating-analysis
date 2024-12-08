@@ -1,4 +1,4 @@
-# Recipe Rating Analysis
+# Data on the Menu: Understanding What Makes a Recipe Shine
 
 ## Introduction
 
@@ -59,66 +59,11 @@ To prepare the dataset for analysis, the following data cleaning steps were perf
 5. **Splitting Nutritional Data**:
    - Extracted specific nutrients (e.g., calories, protein, fat, sugar) into separate columns to analyze their influence on recipe ratings.
 
-
-## Visualization
-
-**Univariate Analysis**
-<iframe 
-    src="image1.html" 
-    width="700" 
-    height="500" 
-    style="border: none;">
-</iframe>
-
-The most common tags, such as "preparation," "time-to-make," and "course," are general descriptors commonly used to categorize recipes. These tags likely reflect structural organization rather than specific culinary attributes.
-Tags like "main-ingredient" and "dietary" are prominent, indicating that recipes are often classified based on their primary components or dietary considerations. This aligns with the importance of catering to specific dietary needs (e.g., vegetarian, gluten-free) in recipe datasets.
-The tags "easy" and "occasion" highlight that simplicity and context (e.g., festive or special events) are important aspects of recipe selection. These attributes may reflect users' preferences for quick and contextually appropriate dishes.
-
-**Bivariate Analysis**
-
-<iframe 
-    src="image2.html" 
-    width="700" 
-    height="500" 
-    style="border: none;">
-</iframe>
-
-The majority of recipes have high ratings (4-5), indicating they are generally well-received.
-Low ratings (1-2) are rare, suggesting either fewer poor-quality recipes or under-reporting of negative experiences.
-The distribution is positively skewed, with a strong bias toward higher ratings.
-Variability is observed in the mid-range (3-4 ratings), indicating mixed feedback for average recipes.
-
-<iframe 
-    src="image3.html" 
-    width="700" 
-    height="500" 
-    style="border: none;">
-</iframe>
-
-Across all rating categories, the median preparation time (log-transformed) is relatively consistent, suggesting that preparation time might not strongly influence a recipe's rating.
-Lower-rated recipes (categories 0-1 and 1-2) exhibit slightly more variability in preparation time, with some recipes requiring notably longer times.
-Higher-rated recipes (categories 4-5) show a tighter distribution, implying that recipes with more predictable preparation times tend to receive better ratings.
-Recipes that are too time-consuming may deter users, especially for lower-rated recipes.
-Focusing on optimizing preparation time for low-rated recipes could improve their reception.
-
-
-Specifically , here are what our cleaned data look like
-among those, relevant data only select the relevant cols in this analysis, and merged_data include all cols we have cleaned up.v
-```py
-relevant_data_head = relevant_data.head().to_markdown(index=False)
-merged_data_head = merged_data.head().to_markdown(index=False)
-```
-
-
 ### Cleaned Data display
 
-## Relevant Data Head
+#### Relevant Data Sample Head
 
 Below is the head of the cleaned relevant data:
-
-# Relevant Data Sample
-
-Below is a sample of the merged dataset:
 
 <div style="max-width: 800px; overflow-x: auto;">
   <table>
@@ -173,10 +118,9 @@ Below is a sample of the merged dataset:
 
 
 
-# Merged Data Sample
+#### Merged Data Sample
 
 Below is a sample of the merged dataset:
-
 
 <div style="max-width: 800px; overflow-x: auto;">
   <table>
@@ -256,6 +200,56 @@ Below is a sample of the merged dataset:
   </table>
 </div>
 
+---
+
+## Visualization
+
+### Univariate Analysis
+<iframe 
+    src="image1.html" 
+    width="700" 
+    height="500" 
+    style="border: none;">
+</iframe>
+
+The most common tags, such as "preparation," "time-to-make," and "course," are general descriptors commonly used to categorize recipes. These tags likely reflect structural organization rather than specific culinary attributes.
+Tags like "main-ingredient" and "dietary" are prominent, indicating that recipes are often classified based on their primary components or dietary considerations. This aligns with the importance of catering to specific dietary needs (e.g., vegetarian, gluten-free) in recipe datasets.
+The tags "easy" and "occasion" highlight that simplicity and context (e.g., festive or special events) are important aspects of recipe selection. These attributes may reflect users' preferences for quick and contextually appropriate dishes.
+
+### Bivariate Analysis
+
+<iframe 
+    src="image2.html" 
+    width="700" 
+    height="500" 
+    style="border: none;">
+</iframe>
+
+The majority of recipes have high ratings (4-5), indicating they are generally well-received.
+Low ratings (1-2) are rare, suggesting either fewer poor-quality recipes or under-reporting of negative experiences.
+The distribution is positively skewed, with a strong bias toward higher ratings.
+Variability is observed in the mid-range (3-4 ratings), indicating mixed feedback for average recipes.
+
+<iframe 
+    src="image3.html" 
+    width="700" 
+    height="500" 
+    style="border: none;">
+</iframe>
+
+Across all rating categories, the median preparation time (log-transformed) is relatively consistent, suggesting that preparation time might not strongly influence a recipe's rating.
+Lower-rated recipes (categories 0-1 and 1-2) exhibit slightly more variability in preparation time, with some recipes requiring notably longer times.
+Higher-rated recipes (categories 4-5) show a tighter distribution, implying that recipes with more predictable preparation times tend to receive better ratings.
+Recipes that are too time-consuming may deter users, especially for lower-rated recipes.
+Focusing on optimizing preparation time for low-rated recipes could improve their reception.
+
+
+Specifically , here are what our cleaned data look like
+among those, relevant data only select the relevant cols in this analysis, and merged_data include all cols we have cleaned up.v
+```py
+relevant_data_head = relevant_data.head().to_markdown(index=False)
+merged_data_head = merged_data.head().to_markdown(index=False)
+```
 
 
 ---
@@ -266,7 +260,23 @@ Below is a sample of the merged dataset:
 
 Our prediction problem is to forecast the **average rating** of a recipe based on its features, such as the number of steps, review length, tags, and nutritional content. This is a **regression problem** because the response variable, `rating_average`, is continuous and ranges between 0 and 5.
 
----
+
+### Feature Selection
+The following features were used as predictors:
+- **Numerical Features**:
+  - `minutes`: Time required to prepare the recipe.
+  - `n_steps`: Number of steps in the recipe.
+  - `num_tags`: Number of tags associated with the recipe.
+  - `review_length`: Length of user reviews (in words).
+  - Nutritional details: `calories`, `total_fat_pdv`, `sugar_pdv`, `protein_pdv`.
+- **Categorical Features**:
+  - `tags`: A list of tags describing the recipe.
+
+Numerical features were standardized using `StandardScaler`.
+
+
+**Rationale for Feature Selection**:
+- These features are inherent properties of the recipe and are available **before prediction**.
 
 ### Response Variable
 
@@ -275,7 +285,7 @@ The response variable is `rating_average`:
 
 ---
 
-### Evaluation Metric
+## Evaluation Metric
 
 The primary evaluation metric for this regression problem is **Root Mean Squared Error (RMSE)**:
 - **Why RMSE:** RMSE penalizes large errors more than metrics like Mean Absolute Error (MAE), which is suitable since large prediction errors (e.g., a predicted rating of 4 when the true rating is 2) are particularly problematic in this context.
@@ -283,26 +293,10 @@ The primary evaluation metric for this regression problem is **Root Mean Squared
 
 ---
 
-### Features Used
 
-**Numerical Features**:
-- `minutes`
-- `n_steps`
-- `num_tags`
-- `review_length`
-- Nutritional values: `total_fat_pdv`, `sugar_pdv`, `protein_pdv`, `calories`
+## Model Selection and Evaluation
 
-**Categorical Features**:
-- `tags`
-
-**Rationale for Feature Selection**:
-- These features are inherent properties of the recipe and are available **before prediction**.
-
----
-
-# Model Selection and Evaluation
-
-## Objective
+### Objective
 The goal was to identify the best model for predicting the average rating of recipes (`rating_average`) using the cleaned and preprocessed dataset. To achieve this, we tested a variety of regression models and evaluated their performance using cross-validation and test set evaluation.
 
 ---
@@ -318,20 +312,6 @@ We compared the following models to determine the best-performing one:
 
 ---
 
-## Feature Selection
-The following features were used as predictors:
-- **Numerical Features**:
-  - `minutes`: Time required to prepare the recipe.
-  - `n_steps`: Number of steps in the recipe.
-  - `num_tags`: Number of tags associated with the recipe.
-  - `review_length`: Length of user reviews (in words).
-  - Nutritional details: `calories`, `total_fat_pdv`, `sugar_pdv`, `protein_pdv`.
-- **Categorical Features**:
-  - `tags`: A list of tags describing the recipe.
-
-Numerical features were standardized using `StandardScaler`.
-
----
 
 ## Methodology
 1. **Data Sampling**:
@@ -369,27 +349,15 @@ The **best-performing model** was:
 
 The ** Random Forest ** was selected as the best model for predicting recipe ratings based on its superior performance in cross-validation and test set evaluation. The low RMSE and high R² score indicate that the model captures the variability in the data effectively. This model can now be used for further predictions or integrated into a recommendation system.
 
+---
 
+## Baseline Model: A Foundation to Build On
 
-# Baseline Model: A Foundation to Build On
-
-## Objective
+### Objective
 The baseline model aims to establish a reference performance using the cleaned dataset. This step serves as a foundation for comparing and improving upon the model in subsequent iterations.
 
----
 
-## Features Used
-For simplicity and interpretability, only the following **numerical features** were used:
-- **`minutes`**: Time required to prepare the recipe.
-- **`n_steps`**: Number of steps in the recipe.
-- **`num_tags`**: Number of tags associated with the recipe.
-- **`review_length`**: Length of user reviews (in words).
-
-These features were standardized using `StandardScaler`.
-
----
-
-## Methodology
+### Methodology
 
 1. **Data Splitting**:
    - The dataset was divided into **60% training data** and **40% test data** using `train_test_split`.
@@ -412,20 +380,17 @@ These features were standardized using `StandardScaler`.
 
 - **Baseline RMSE (RandomForest Regression)**: `0.74`
 
----
-
 
 The baseline model provides a benchmark RMSE of `0.74`. This indicates that the model has reasonable predictive capability but leaves room for optimization and improvement. Future steps will explore additional features, fine-tune hyperparameters, and test more advanced models to improve performance.
 
 
-# Final Model: Elevating Predictions
+## Final Model: Elevating Predictions
 
-## Objective
+### Objective
 The final model incorporates additional features and hyperparameter tuning to improve performance over the baseline model. The goal is to minimize the prediction error (measured by RMSE) on the test dataset.
 
----
 
-## Features Added
+### Features Added
 To enhance the predictive power of the model, the following features were included:
 - **`review_length`**: The number of words in the review, reflecting user engagement.
 - **`minutes`**: Recipe preparation time.
@@ -436,17 +401,15 @@ To enhance the predictive power of the model, the following features were includ
   - **`protein_pdv`**: Percentage daily value of protein.
 - **`tags`**: Recipe tags, filtered to retain the top 10 most frequent tags and group others under "Other".
 
----
+### Methodology
 
-## Methodology
-
-### 1. **Data Preprocessing**
+#### 1. **Data Preprocessing**
 - **Numerical Features**:
   - Standardized using `StandardScaler` to normalize their ranges.
 - **Categorical Features**:
   - Encoded using `OneHotEncoder` for the top 10 tags, while infrequent tags were replaced with "Other".
 
-### 2. **Hyperparameter Tuning**
+#### 2. **Hyperparameter Tuning**
 - The model was fine-tuned using **RandomizedSearchCV** on the following hyperparameters:
   - Number of estimators (`n_estimators`): [50, 100, 200]
   - Maximum tree depth (`max_depth`): [10, 20, 30]
@@ -454,7 +417,7 @@ To enhance the predictive power of the model, the following features were includ
   - Minimum samples per leaf (`min_samples_leaf`): [1, 2, 4]
 - A 3-fold cross-validation was used to select the best parameters based on negative mean squared error (MSE).
 
-### 3. **Model Training**
+#### 3. **Model Training**
 - The best model identified through hyperparameter tuning was a **RandomForest Regressor**.
 - The final model was trained on the full training dataset and evaluated on the test dataset.
 
