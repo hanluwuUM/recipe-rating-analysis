@@ -17,8 +17,11 @@ paginate_path: "/blog/page/:num"
 # -------------------------------
 # Plugins
 plugins:
-  - jekyll-paginate
-  - jekyll-sitemap
+  - jekyll-remote-theme # add this line to the plugins list if you already have one
+
+# -------------------------------
+# Theme
+remote_theme: pages-themes/cayman@v0.2.0
 
 # -------------------------------
 # Sections
@@ -47,7 +50,3 @@ sections:
     content: >
       The final model incorporated engineered features such as review sentiment scores and contributor reputation. 
       After tuning hyperparameters and testing various algorithms, our final model achieved better performance and provided deeper insights into recipe rating patterns.
-
-# -------------------------------
-# Theme
-theme: "minimal"
