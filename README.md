@@ -56,8 +56,8 @@ To prepare the dataset for analysis, we applied the following data cleaning step
 Univariate Analysis
 <iframe 
     src="image1.html" 
-    width="1000" 
-    height="600" 
+    width="400" 
+    height="300" 
     style="border: none;">
 </iframe>
 
@@ -69,15 +69,15 @@ Bivariate Analysis
 
 <iframe 
     src="image2.html" 
-    width="1000" 
-    height="600" 
+    width="400" 
+    height="300" 
     style="border: none;">
 </iframe>
 
 <iframe 
     src="image3.html" 
-    width="1000" 
-    height="600" 
+    width="400" 
+    height="300" 
     style="border: none;">
 </iframe>
 
