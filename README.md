@@ -318,7 +318,7 @@ We compared the following models to determine the best-performing one:
    - To speed up computation, we subsampled **20% of the dataset** while retaining the overall distribution.
 
 2. **Data Splitting**:
-   - The data was split into **80% training** and **20% test** sets using `train_test_split`.
+   - The data was split into **60% training** and **40% test** sets using `train_test_split`.
 
 3. **Cross-Validation**:
    - Each model was evaluated using **3-fold cross-validation** on the training set. 
