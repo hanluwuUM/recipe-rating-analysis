@@ -168,3 +168,24 @@ The primary evaluation metric for this regression problem is **Root Mean Squared
 **Authors**:  
 - Xiulin Chen (xiulin@umich.edu)  
 - Hanlu Wu (hanluwu@umich.edu)
+
+<iframe
+  src="assets/image1.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+<iframe
+  src="assets/image2.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+<iframe
+  src="assets/image3.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
