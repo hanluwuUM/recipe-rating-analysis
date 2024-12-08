@@ -75,7 +75,7 @@ Bivariate Analysis
 </iframe>
 
 <iframe 
-    src="/Users/WuHanLu/img3.html" 
+    src="/Users/WuHanLu/image3.html" 
     width="1000" 
     height="600" 
     style="border: none;">
